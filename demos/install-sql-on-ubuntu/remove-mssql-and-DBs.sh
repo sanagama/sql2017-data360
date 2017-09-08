@@ -15,9 +15,4 @@ rm -fr /var/opt/mssql
 echo Uninstalling mssql-tools...
 apt-get remove mssql-tools unixodbc-dev
 
-apt autoremove
-
-apt-get purge
-apt-get autoclean
-
 echo All done!
