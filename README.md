@@ -25,7 +25,7 @@ Perform these steps ***once*** on your computer:
 Jump to:
 - [Setup MacBook](#setup-macbook)
 - [Setup Ubuntu VM](#setup-ubuntu-vm)
-- [One-time Demo Setup](#setup-windows-vm)
+- [Setup Windows VM](#setup-windows-vm)
 - [Setup Docker](#setup-docker)
 
 ### Setup MacBook
@@ -39,7 +39,6 @@ Jump to:
 1. Save the ZIP file to your ```HOME``` directory as ```~/sql2017-data360.zip``` in the VM.
 1. Extract the zip file to your ```HOME``` directory ```~/sql2017-data360``` in the VM.
 1. At this point, you should have all the demo files in the directory ```~/sql2017-data360``` in your MacBook.
-
 
 ### Setup Ubuntu VM
 1. Create an Ubuntu 17.04 VM (2 cores + 4 GB RAM + 16 Gb HDD)
@@ -103,7 +102,7 @@ Switch over to the Ubuntu VM.
 
 Launch ```Terminal``` and type the following:
 ```
-cd ~/sql2017-data360/install-sql-on-ubuntu
+cd ~/sql2017-data360/sql-on-ubuntu
 ls -al
 cat ./1-install-sql2017.sh
 ```
@@ -215,7 +214,7 @@ ls -al *.bak
 
 Type the following in the ```Terminal``` window:
 ```
-cd ~/sql2017-data360/install-sql-on-ubuntu
+cd ~/sql2017-data360/sql-on-ubuntu
 cat ./5-move-bak-file.sh
 sudo ./5-move-bak-file.sh
 ```
@@ -265,8 +264,8 @@ Switch to the MacBook.
 
 (**Talking Points**)
 - SQL is running in my Ubuntu VM.
-- I'm on my MacBook and I don't have SSMS.
-- What can I use to run T-SQL queries interactively?
+- I'm on my MacBook and I can't use SSMS.
+- What can I use to edit and run T-SQL queries interactively?
 - Well, we can use Visual Studio Code and the nifty mssql extension.
 
 Launch VS Code.
@@ -286,7 +285,7 @@ Use VS Code to connect to SQL in Docker and run Graph DB demo
 
 ### 6. Use SQL in Docker for dev/test
 
-Show extraction
+Show extraction (from Ubuntu VM - already data masked)
 Run mssql-scripter on macOS to extract from SQL on Windows
 
 Show sanitization & deployment
