@@ -349,7 +349,7 @@ Open the file ```~/sql2017-data360/demos/graph_demo.sql``` in VS Code.
 Walk each through line in the file and execute it.
 
 (**Talking Points**)
-- That was a quick demo of the new Graph support in SQL 2017.
+- That was a quick demo of the new Graph support in SQL 2017 running in Docker.
 
 ### 6. Use SQL in Docker for dev/test
 
