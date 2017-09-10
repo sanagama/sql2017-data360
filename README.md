@@ -29,7 +29,7 @@ Jump to:
 - [Setup Docker](#setup-docker)
 
 ### Setup MacBook
-1. Install *Python* and *pip* on your MacBook. Here's a great guide for macOS: <https://hackercodex.com/guide/python-development-environment-on-mac-osx/>
+1. Install *Python* and *pip* on your MacBook. Here's a great guide for macOS: <https://hackercodex.com/guide/python-development-environment-on-mac-osx>
 1. Download and install Visual Studio Code from here: <https://code.visualstudio.com/download>
 1. Install the *mssql extension for VS Code* as described here: <https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-develop-use-vscode>
 1. Install *mssql-scripter* as described here: <https://github.com/Microsoft/sql-xplat-cli/blob/dev/doc/installation_guide.md>
@@ -191,7 +191,7 @@ Expand *tables* and do a *select top 1000* from the *Actors* table.
 - Let’s try and migrate this database over to SQL on Ubuntu.
 - I have a backup of this database here ```c:\sql2017-data360\backup-files\BollywoodDB.bak``` that I’d like to migrate to SQL on Ubuntu.
 - Migrating a database from SQL on Windows to SQL on Linux is easy: simply restore a backup
-- The first step is to copy the ```.bak``` file from WIndows to Ubuntu
+- The first step is to copy the ```.bak``` file from Windows to Ubuntu
 - There are several ways you can do this (ssh, scp, etc.)
 - For this demo, I’ll just use WinSCP to copy the ```.bak``` file from my Windows VM to my Ubuntu VM.
 
@@ -270,8 +270,64 @@ Switch to the MacBook.
 
 Launch VS Code.
 
+Click on the ```extensions``` button and show that the ```mssql extension``` is installed.
+
+Create a new file and change the file type to ```SQL```
+
+Type the following command in the editor:
+```
+SELECT @@VERSION
+```
+
+Click ```Execute Query```
+
+(**Talking Points**)
+- VS Code prompts me for the connection
+- I'll connect to SQL running in my Ubuntu VM
+
+Enter the following values in the connection prompt:
+Property | Value
+--------------- | ------
+Server Name | ***pbox-ubuntu***
+Authentication | ***SQL Authentication***
+Username | ***sa***
+Password | ***Yukon900***
+Save Password | ***Yes***
+
+(**Talking Points**)
+- Show the results grid
+- Let me switch to the database that I restored earlier
+
+Click on ```master``` in the status bar and select ```BollywoodDB```
+
+Type the following command in the editor:
+```
+SELECT * from dbo.Actors
+```
+
+(**Talking Points**)
+- Talk to export results as CSV, JSON, Excel
+
+(**Talking Points**)
+- Let's try something a bit more interesting
+- You know that SQL Server supports a feature called Dynamic Data Masking which allows you to mask sensitive information
+- Let's see it in action
+
+Open the file ```~/sql2017-data360/demos/sql_security_demo.sql``` in VS Code.
+
+Walk each through line in the file and execute it.
+
+(**Talking Points**)
+- As you can see, we have a pretty good experience to edit and run T-SQL queries in VS Code and use it from my MacBook.
+- The mssql extension for VS Code is open source under MIT and is available on the VS Code marketplace for free.
+- We invite you to try VS Code on Linux, macOS and Windows with SQL Server and tell us what you think.
 
 ### 4. SQL 2017 in Docker
+
+Switch to the MacBook. 
+
+(**Talking Points**)
+- Let me switch context and talk about running SQL in Docker.
 
 Install experience
 
@@ -281,9 +337,32 @@ Run sqlcmd from outside the container
 
 ### 5. Graph Support in SQL 2017
 
-Use VS Code to connect to SQL in Docker and run Graph DB demo
+(**Talking Points**)
+- SQL in Docker is plain old SQL Server.
+- I can use all the new features in SQL 2017 as usual.
+- As an example, let's take a look at the new Graph support in SQL 2017.
+
+Switch to VS Code on the MacBook.
+
+Open the file ```~/sql2017-data360/demos/graph_demo.sql``` in VS Code.
+
+Walk each through line in the file and execute it.
+
+(**Talking Points**)
+- That was a quick demo of the new Graph support in SQL 2017.
 
 ### 6. Use SQL in Docker for dev/test
+
+Ensure the Ubuntu VM is still running. After the previous demo, the data in the *Actors* table in the ```BollywoodDB``` database is masked.
+
+(**Talking Points**)
+- Let me switch context and talk about using SQL in Docker for dev/test scenarios.
+- SQL is still running in my Ubuntu VM.
+- Recall that we used Dynamic Data Masking to mask data in some sensitive columns.
+- Now, imagine that SQL running in my Ubuntu VM is my production server.
+- I'm an app dev and I'm told to create a simple web app to edit data about those Bollywood actors.
+- I need to get a copy of the production data to develop my app
+- I don't need to see the sensitive data while creating or testing my app.
 
 Show extraction (from Ubuntu VM - already data masked)
 Run mssql-scripter on macOS to extract from SQL on Windows
@@ -292,3 +371,8 @@ Show sanitization & deployment
 Run mssql-scripter + sqlcmd on macOS to deploy script to SQL in Docker
 
 Talk to how this can be integrated with a CI/CD pipeline.
+
+(**Talking Points**)
+- That was a quick example of using SQL in Docker for dev/test scenarios
+- You can use existing command line tools to seed data in Docker and sanitize or get a subset of data along the way
+- You can also integrate these steps with your existing CI/CD pipelines and automated testing processes.

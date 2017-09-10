@@ -1,5 +1,5 @@
 /*
- * Microsoft Data 360 II - Sept 2017
+ * Microsoft Data 360 | Sept 2017
  * https://github.com/sanagama/sql2017-data360
  *
  * Dynamic Data Masking Demo
