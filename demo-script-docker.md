@@ -13,7 +13,6 @@ Jump to:
 There are 4 demos below. I recommend you perform these demos in sequence if possible.
 
 Jump to:
-1. [SQL in Docker Intro](#sql-in-docker-intro)
 1. [Create a container](#1-create-a-container)
 1. [Create pre-production environment](#2-create-pre-production-environment)
 1. [Create dev environment](#3-create-dev-environment)
