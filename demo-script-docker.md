@@ -47,7 +47,7 @@ Go to <https://hub.docker.com/r/microsoft/mssql-server-linux/> and talk to the i
 
 Launch a ```Terminal``` window and type the following:
 ```
-cd ~/sql2017-data360/sql-in-docker
+cd ~/sql2017-data360/demos/sql-in-docker
 ls -al
 cat ./1-pull-image-sql.sh
 ./1-pull-image-sql.sh

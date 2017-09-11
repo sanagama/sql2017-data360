@@ -33,7 +33,7 @@ Switch over to the Ubuntu VM.
 
 Launch ```Terminal``` and type the following:
 ```
-cd ~/sql2017-data360/sql-on-ubuntu
+cd ~/sql2017-data360/demos/sql-on-ubuntu
 ls -al
 cat ./1-install-sql2017.sh
 ```
@@ -145,7 +145,7 @@ ls -al *.bak
 
 Type the following in the ```Terminal``` window:
 ```
-cd ~/sql2017-data360/sql-on-ubuntu
+cd ~/sql2017-data360/demos/sql-on-ubuntu
 cat ./5-move-bak-file.sh
 sudo ./5-move-bak-file.sh
 ```
