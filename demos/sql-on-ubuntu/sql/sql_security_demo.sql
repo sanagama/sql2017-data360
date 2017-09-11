@@ -32,13 +32,13 @@ GO
  */
 
 -- Apply mask: mask e-mail with a built-in function
-ALTER TABLE [Actors] ALTER COLUMN [Email]
-ADD MASKED WITH (FUNCTION = 'email()');
+ALTER TABLE [Actors]
+ALTER COLUMN [Email] ADD MASKED WITH (FUNCTION = 'email()');
 GO
 
 -- Apply mask: only show first 2 digits of mobile number
-ALTER TABLE [Actors] ALTER COLUMN [MobileNumber]
-ADD MASKED WITH (FUNCTION = 'partial(2, "XXXXXXXX", 0)');
+ALTER TABLE [Actors]
+ALTER COLUMN [MobileNumber] ADD MASKED WITH (FUNCTION = 'partial(2, "XXXXXXXX", 0)');
 GO
 
 -- Allow user 'TrustedEmployee' to see unmasked data

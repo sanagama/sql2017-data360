@@ -1,13 +1,17 @@
 /*
- * Here's what a DBA would do to create a pre-prod environment for a dev and mask sensitive data
+ * Here's what a DBA might do to create a pre-prod environment for a dev and mask sensitive data:
  *
+ * 1. Restore the database to SQL in Docker
+ * 2. Mask sensitive columns (EmailAddress and Phone)
+ * 3. Create a new user ('scripter') with UNMASK permission
+ * 4. EmailAddress and Phone will be masked for user 'scripter'
  */
 
 -- Dump database names
 SELECT NAME FROM SYS.DATABASES
 GO
 
--- Restore database into Docker
+-- 1. Restore database into Docker
 -- The .BAK file is a directory outside the Docker image that is mounted as a volume
 RESTORE FILELISTONLY FROM DISK = '/backups/AdventureworksLT.bak'
 GO
@@ -23,10 +27,28 @@ GO
 SELECT NAME FROM SYS.DATABASES
 GO
 
-USE AdventureworksLT
+-- 2. Create a new user called 'scripter' 
+USE [master]
+CREATE LOGIN scripter WITH PASSWORD = 'Yukon900'
 GO
 
--- EmailAddress and Phone are currently visible
+USE [AdventureworksLT]
+GO
+
+CREATE USER scripter FOR LOGIN scripter
+GO
+
+ALTER ROLE [db_datareader] ADD MEMBER [scripter]
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [scripter]
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [scripter]
+GO
+GRANT VIEW DEFINITION TO [scripter]
+GO
+print(N'Successfully created user: scripter without UNMASK permission on AdventureworksLT database');
+
+-- EmailAddress and Phone are currently visible to everyone
 SELECT * FROM [SalesLT].[Customer]
 GO
 
@@ -35,11 +57,13 @@ ALTER TABLE [SalesLT].[Customer] ALTER COLUMN [EmailAddress]
 ADD MASKED WITH (FUNCTION = 'email()');
 GO
 
--- Apply Dynamic Data Masking: only show first 2 digits of mobile number
+-- Apply Dynamic Data Masking: only show first 2 digits of the phone number
 ALTER TABLE [SalesLT].[Customer] ALTER COLUMN [Phone]
 ADD MASKED WITH (FUNCTION = 'partial(2, "XXXXXXXX", 0)');
 GO
 
--- EmailAddress and Phone are now masked
-SELECT * FROM [SalesLT].[Customer]
+-- EmailAddress and Phone are masked for user 'scripter'
+EXECUTE AS USER = 'scripter';
+SELECT * FROM [SalesLT].[Customer];
+REVERT;
 GO

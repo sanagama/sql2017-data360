@@ -72,7 +72,7 @@ cat ./2-run-image-sql.sh
 Type the following in the ```Terminal``` window:
 ```
 ls -al
-cat ./2-run-sqlcmd.sh
+cat ./3-run-sqlcmd.sh
 ./3-run-sqlcmd.sh
 ```
 
@@ -165,7 +165,7 @@ cat ./7-run-script-dev-db.sh
 - But we still don't have any data
 - Recall that we've already masked sensitive data in the ```sqldocker-preprod``` image
 - Also recall that the the dev only needs the data from the ```Customer``` table
-- Now the dev adds a new requirement: she only needs about 10 rows from the ```Customer``` table
+- Now the dev adds a new requirement: she only wants about 10 rows from the ```Customer``` table
 - Let's go get the data from the ```Customer``` table with the good old ```bcp``` command line utility
 - And keep only 10 rows
 
