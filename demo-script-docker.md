@@ -5,8 +5,9 @@ This page has the ***demo scripts*** and ***talking points*** for the ***SQL 201
 
 Jump to:
 - [Main README.md](https://github.com/sanagama/sql2017-data360)
-- [Demo Setup](https://github.com/sanagama/sql2017-data360/demo-setup.md)
-- [Demo Script - SQL on Linux](https://github.com/sanagama/sql2017-data360/demo-script-sql-linux.md)
+- [Demo Setup](https://github.com/sanagama/sql2017-data360/blob/master/demo-setup.md)
+- [Demo Script - SQL on Linux](https://github.com/sanagama/sql2017-data360/blob/master/demo-script-sql-linux.md)
+- [Demo Script - SQL in Docker](https://github.com/sanagama/sql2017-data360/blob/master/demo-script-docker.md)
 
 ## Demo Script - SQL 2017 in Docker
 There are 4 demos below. I recommend you perform these demos in sequence if possible.

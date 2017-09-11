@@ -4,9 +4,10 @@
 This repo has the demo scripts, decks and videos that were presented at the Data & AI Summit, Sept 2017.
 
 Jump to:
-- [Demo Setup](https://github.com/sanagama/sql2017-data360/demo-setup.md)
-- [Demo Script - SQL on Linux](https://github.com/sanagama/sql2017-data360/demo-script-sql-linux.md)
-- [Demo Script - SQL in Docker](https://github.com/sanagama/sql2017-data360/demo-script-docker.md)
+- [Main README.md](https://github.com/sanagama/sql2017-data360)
+- [Demo Setup](https://github.com/sanagama/sql2017-data360/blob/master/demo-setup.md)
+- [Demo Script - SQL on Linux](https://github.com/sanagama/sql2017-data360/blob/master/demo-script-sql-linux.md)
+- [Demo Script - SQL in Docker](https://github.com/sanagama/sql2017-data360/blob/master/demo-script-docker.md)
 
 ## Prerequisites
 

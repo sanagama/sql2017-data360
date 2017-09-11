@@ -5,8 +5,9 @@ This page has the ***demo setup instructions*** for the demos presented at the D
 
 Jump to:
 - [Main README.md](https://github.com/sanagama/sql2017-data360)
-- [Demo Script - SQL on Linux](https://github.com/sanagama/sql2017-data360/demo-script-sql-linux.md)
-- [Demo Script - SQL in Docker](https://github.com/sanagama/sql2017-data360/demo-script-docker.md)
+- [Demo Setup](https://github.com/sanagama/sql2017-data360/blob/master/demo-setup.md)
+- [Demo Script - SQL on Linux](https://github.com/sanagama/sql2017-data360/blob/master/demo-script-sql-linux.md)
+- [Demo Script - SQL in Docker](https://github.com/sanagama/sql2017-data360/blob/master/demo-script-docker.md)
 
 ## Prerequisites
 This demo was done on a MacBook running Docker and 2 VMs, all running locally on the MacBook. I used Parallels, but you can also use VirtualBox to create & run the VMs. Modify accordingly you're using Linux or Windows to run the demo.
