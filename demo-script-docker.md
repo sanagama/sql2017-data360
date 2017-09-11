@@ -114,14 +114,14 @@ Type the following in the ```Terminal``` window:
 - Let's fire up VS Code and connect to SQL in Docker
 
 Launch VS Code.
-Connect to ```sqldocker-preprod```
+Connect to ```localhost```
 Open file ```~/sql2017-data360/sql-in-docker/sql/create-db-preprod.sql```
 
 Talk to each statement as you execute it.
 
 (**Talking Points**)
 - Great, we've now have a pre-production environment where we've masked sensitive data
-- Next problem: this is the full production database. The dev only needs the data in the ```Customer``` table.
+- Next problem: this is the full production database. The dev only needs the ```Customer``` table.
 - Let's see how we can address that
 
 #### 3. Create dev environment
@@ -140,7 +140,9 @@ cat ./5-create-image-dev.sh
 (**Talking Points**)
 - We've released a new Python-based open source command line tool called ```mssql-scripter```
 - We can use it to generate scripts to create database schema - think of this as a multi-OS CLI equivalent of the *Generate Scripts Wizard* in SSMS.
-- Let's use it to connect to ```sqldocker-preprod``` and generate a DDL script for my production database.
+- Recall that the the dev only needs the data from the ```Customer``` table
+- Let's use it to connect to ```sqldocker-preprod``` and generate a DDL + DML script only for the ```Customer``` table
+- Recall that we had masked sensitive data in the ```sqldocker-preprod``` image
 
 Type the following in the ```Terminal``` window:
 ```
@@ -150,8 +152,11 @@ cat ./6-create-script-dev-db.sh
 ```
 
 (**Talking Points**)
-- The script has been generated in file ```createdb.sql```
-- Let's run it against ```sqldocker-dev``` to create the database schema.
+- The script has been generated in file ```create-customer.sql```
+- Note that the scripts has the schema + data only for the ```Customer``` table
+- Note that sensitive data is masked because we ran the command as the ```scripter``` user
+- Let's the generated script against ```sqldocker-dev``` to create the database schema and also insert data.
+- Now the dev adds a new requirement: she only wants about 10 rows from the ```Customer``` table
 
 Type the following in the ```Terminal``` window:
 ```
@@ -161,27 +166,11 @@ cat ./7-run-script-dev-db.sh
 ```
 
 (**Talking Points**)
-- Cool, now we have the database schema in ```sqldocker-dev```
-- But we still don't have any data
-- Recall that we've already masked sensitive data in the ```sqldocker-preprod``` image
-- Also recall that the the dev only needs the data from the ```Customer``` table
-- Now the dev adds a new requirement: she only wants about 10 rows from the ```Customer``` table
-- Let's go get the data from the ```Customer``` table with the good old ```bcp``` command line utility
-- And keep only 10 rows
-
-Type the following in the ```Terminal``` window:
-```
-ls -al
-cat ./8-run-bcp-out-in.sh
-./8-run-bcp-out-in.sh
-```
-
-(**Talking Points**)
 - Cool, all done
 - Let's take a look at the dev image
 
 Switch to VS Code.
-Connect to ```sqldocker-dev```
+Connect to ```localhost,1432```
 Open a new query window and type ```SELECT * FROM [SalesLT].[Customer]```
 
 (**Talking Points**)
